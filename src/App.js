@@ -3,6 +3,8 @@ import DayList from './component/DayList';
 import Header from './component/Header';
 import EmptyPage from './component/EmptyPage';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import CreateWord from './component/CreateWord';
+import CreateDay from './component/CreateDay';
 
 // git add . 으로 수정 사항 반영
 // git commit -m "completed lecture 10"
@@ -17,6 +19,8 @@ function App() {
         <Routes>
           <Route path='/' element={<DayList />}/>
           <Route path="/day/:day" element={<Day/>} />
+          <Route path="/create_word" element={<CreateWord/>} />
+          <Route path="/create_day" element={<CreateDay />} />
           <Route path="*" element={<EmptyPage/>} />
         </Routes>
       </BrowserRouter>
