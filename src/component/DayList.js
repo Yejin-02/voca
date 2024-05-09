@@ -5,6 +5,8 @@ export default function DayList() {
   // 우선은 days에 빈 배열
   const days = useFetch('http://localhost:3001/days'); 
   return (
+    <>
+    {days.length === 0 && <span>Loading...</span>}
     <ul className="list_day">
       {days.map(day => (
         <li key={day.id}>
@@ -12,6 +14,7 @@ export default function DayList() {
         </li>
       ))}
     </ul>
+    </>
   );
 }
 
