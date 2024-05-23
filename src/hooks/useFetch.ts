@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-let useFetch = (url) => {
+let useFetch = (url: string) => {
     const [data, setData] = useState([]);
 
     // useEffect(함수, [])를 통해 렌더링 직후에 한 번 API 호출을 실행

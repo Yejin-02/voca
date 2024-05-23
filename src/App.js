@@ -1,14 +1,16 @@
-import Day from './component/Day';
-import DayList from './component/DayList';
-import Header from './component/Header';
-import EmptyPage from './component/EmptyPage';
+import Day from './component/Day.tsx';
+import DayList from './component/DayList.tsx';
+import Header from './component/Header.tsx';
+import EmptyPage from './component/EmptyPage.tsx';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import CreateWord from './component/CreateWord';
-import CreateDay from './component/CreateDay';
+import CreateWord from './component/CreateWord.tsx';
+import CreateDay from './component/CreateDay.tsx';
 
-// git add . 으로 수정 사항 반영
-// git commit -m "completed lecture 10"
-// git push origin 1-complete-lecture-10 => 원격 레포에 올려라
+// json-server --watch ./src/DB/data.json --port 3001
+
+// git add .
+// git commit -m "completed lecture ??"
+// git push origin ?? => 원격 레포에 올려라
 // pull request는 위의 브랜치를 main에 합병을 시켜줌 => 이거까지 하면 끝
 
 function App() {

@@ -1,33 +1,41 @@
-import { useRef, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useFetch from "../hooks/useFetch";
+import useFetch from "../hooks/useFetch.ts";
+import React from "react";
+import { IDay } from "./DayList";
 
 let CreateWord = () => {
-    const days = useFetch(`http://localhost:3001/days`);
+    const days : IDay[] = useFetch(`http://localhost:3001/days`);
     const history = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
 
-    let onSubmit = (e) => {
+    let onSubmit = (e: FormEvent) => {
         e.preventDefault(); // 기본 기능(새로고침)을 방지
         
-        if(!isLoading) { 
+        // null이 아님을 체크하고 시작
+        if(!isLoading && dayRef.current && engRef.current && korRef.current) { 
             setIsLoading(true)
+
+            const day = dayRef.current.value;
+            const eng = engRef.current.value;
+            const kor = korRef.current.value;
+
             fetch(`http://localhost:3001/words/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    day: dayRef.current.value,
-                    eng: engRef.current.value,
-                    kor: korRef.current.value,
+                    day,
+                    eng,
+                    kor,
                     isDone: false,
                 }),
             })
             .then(res => {
                 if(res.ok) {
                     alert('생성이 완료되었습니다.');
-                    history(`/day/${dayRef.current.value}`);
+                    history(`/day/${day}`);
                     setIsLoading(false);
                 }
             });
@@ -35,9 +43,11 @@ let CreateWord = () => {
     }
 
 
-    const engRef = useRef(null);
-    const korRef = useRef(null);
-    const dayRef = useRef(null);
+    // ref로 <?>를 가져올 건데 이때 null일 가능성이 있음
+    // type을 지정 -> engRef에 대한 파악 없이 어떤 기능 쓸 수 있는지 알 수 있음
+    const engRef = useRef<HTMLInputElement>(null);
+    const korRef = useRef<HTMLInputElement>(null);
+    const dayRef = useRef<HTMLSelectElement>(null);
 
     return (
         <>
