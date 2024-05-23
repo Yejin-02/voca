@@ -1,9 +1,22 @@
 import { useState } from "react";
+import React from "react";
 
-export default function Word(props) {
-    const [word, setWord] = useState(props.word);
+export interface IProps {
+    word: IWord; // word를 가진 prop를 IProps로
+}
+
+export interface IWord {
+    day: string;
+    eng: string;
+    kor: string;
+    isDone: boolean;
+    id: number;
+}
+
+export default function Word(props: IProps) {
+    const [word, setWord] = useState(props.word); // word는 IProps에서 IWord로 타입 지정 됨
     const [isShow, setIsShow] = useState(false);
-    const [isDone, setIsDone] = useState(word.isDone);
+    const [isDone, setIsDone] = useState(word.isDone); // isDone은 IWord에서 boolean으로 타입 지정 됨
 
     function toggleShow() {
         setIsShow(!isShow);
@@ -35,7 +48,10 @@ export default function Word(props) {
             })
             .then(res => {
                 if(res.ok) {
-                    setWord({id: 0})
+                    setWord({
+                        ...word, // Word를 {id: 0}으로 set하려면 word의 타입에 맞지 않으므로 기존에 있던 property를 가져와 줌
+                        id: 0,
+                    })
                 }
             });
         }

@@ -15,6 +15,10 @@
     {
       "id": "25a3",
       "day": 4
+    },
+    {
+      "id": "ac5c",
+      "day": 5
     }
   ],
   "words": [
@@ -51,7 +55,7 @@
       "day": "1",
       "eng": "book",
       "kor": "책",
-      "isDone": false
+      "isDone": true
     },
     {
       "id": "e115",
@@ -93,6 +97,20 @@
       "day": "3",
       "eng": "night",
       "kor": "밤",
+      "isDone": false
+    },
+    {
+      "id": "0f4b",
+      "day": "5",
+      "eng": "culture",
+      "kor": "문화",
+      "isDone": false
+    },
+    {
+      "id": "c686",
+      "day": "5",
+      "eng": "table",
+      "kor": "탁자",
       "isDone": false
     }
   ]

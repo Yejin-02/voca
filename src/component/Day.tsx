@@ -1,12 +1,15 @@
 import { useParams } from "react-router-dom";
 // import EmptyPage from "./EmptyPage";
-import Word from "./Word";
-import useFetch from "../hooks/useFetch";
+import Word from "./Word.tsx";
+import useFetch from "../hooks/useFetch.ts";
+import { IWord } from "./Word.tsx";
+import React from "react";
 
 export default function Day() {
-  const {day} = useParams();
+  // const {day} = useParams(); -> day를 가지는 객체인지 확신할 수 없음
+  const {day} = useParams<{day: string}>(); // 제너릭으로 
 
-  const WordList = useFetch(`http://localhost:3001/words?day=${day}`);
+  const WordList: IWord[] = useFetch(`http://localhost:3001/words?day=${day}`);
   // const Days = useFetch(`http://localhost:3001/days`);
   
   // let a = [];

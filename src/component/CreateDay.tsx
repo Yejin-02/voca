@@ -1,11 +1,13 @@
-import useFetch from "../hooks/useFetch";
+import useFetch from "../hooks/useFetch.ts";
 import { useNavigate } from "react-router-dom";
+import { IDay } from "./DayList";
+import React from "react";
 
 let CreateWord = () => {
-    const days = useFetch(`http://localhost:3001/days`);
+    const days: IDay[] = useFetch(`http://localhost:3001/days`);
     const history = useNavigate();
 
-    let addDay = (e) => {
+    let addDay = (e: React.MouseEvent) => {
         e.preventDefault(); // 기본 기능(새로고침)을 방지
         
         fetch(`http://localhost:3001/days/`, {
